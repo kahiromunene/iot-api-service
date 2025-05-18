@@ -58,7 +58,7 @@ jobs:
           DB_USER: iot_user
           DB_PASSWORD: iot_pass
         run: |
-          pytest tests/
+           pytest tests/
 
       - name: Build Docker Image
         run: docker build -t iot-api .
