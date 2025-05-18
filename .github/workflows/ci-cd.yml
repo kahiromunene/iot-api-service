@@ -58,8 +58,7 @@ jobs:
           DB_USER: iot_user
           DB_PASSWORD: iot_pass
         run: |
-          echo "Running tests with PYTHONPATH set to repo root"
-          PYTHONPATH=${{ github.workspace }} pytest tests/
+          pytest tests/
 
       - name: Build Docker Image
         run: docker build -t iot-api .
