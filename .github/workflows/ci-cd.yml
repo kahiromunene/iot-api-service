@@ -55,8 +55,7 @@ jobs:
           DB_NAME: iot_db
           DB_USER: iot_user
           DB_PASSWORD: iot_pass
-        run: |
-          pytest tests/
+        run: PYTHONPATH=${{ github.workspace }} pytest tests/
 
       - name: Build Docker Image
         run: docker build -t iot-api .
