@@ -17,7 +17,7 @@ services:
       DB_NAME: iot_db
       DB_USER: iot_user
       DB_PASSWORD: iot_pass
-
+      
   db:
     image: postgres:14
     container_name: iot-db
