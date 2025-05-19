@@ -37,7 +37,7 @@ A scalable IoT API service built with FastAPI, Docker, and PostgreSQL, deployed 
 ├── .aws/
 │   └── task-definition.json # ECS task definition file
 ├── .github/workflows/
-│   └── deploy.yml           # CI/CD pipeline config
+│   └── ci-cd.yml           # CI/CD pipeline config
 └── README.md
 ```
 
@@ -82,14 +82,14 @@ Health checks ensure the app waits until the DB is ready.
 
 ## 🛠 CI/CD via GitHub Actions
 
-Workflow `.github/workflows/deploy.yml` does the following on push to `main`:
+Workflow `.github/workflows/ci-cd.yml` does the following on push to `main`:
 
 1. Logs into AWS ECR
 2. Builds and pushes Docker image
 3. Renders ECS task definition
 4. Deploys updated task to ECS cluster
 
-You must configure these in `deploy.yml`:
+You must configure these in `ci-cd.yml`:
 
 ```yaml
 env:
