@@ -29,13 +29,10 @@ A scalable IoT API service built with FastAPI, Docker, and PostgreSQL, deployed 
 ## 🔧 Project Structure
 
 ```
-.
 ├── app/
 │   └── main.py              # FastAPI app entry point
 ├── Dockerfile               # App container build file
 ├── docker-compose.yml       # Local development setup
-├── .aws/
-│   └── task-definition.json # ECS task definition file
 ├── .github/workflows/
 │   └── ci-cd.yml           # CI/CD pipeline config
 └── README.md
