@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   api:
     build: .
@@ -13,12 +11,12 @@ services:
       - .:/app
     working_dir: /app
     environment:
-      DB_HOST: db
+      DB_HOST: iot-db
       DB_NAME: iot_db
       DB_USER: iot_user
       DB_PASSWORD: iot_pass
-      
-  db:
+
+  iot-db:
     image: postgres:14
     container_name: iot-db
     restart: always
@@ -30,11 +28,10 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U iot_user -d iot_db  || exit 1"]
+      test: ["CMD-SHELL", "pg_isready -U iot_user -d iot_db || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 5
-
 
 volumes:
   pgdata:
