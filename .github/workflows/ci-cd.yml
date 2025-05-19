@@ -119,7 +119,7 @@ jobs:
         run: |
           ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ${{ secrets.DEPLOY_DIR }}
-            docker compose down
-            docker compose up -d --build
+            docker-compose down
+            docker-compose up -d --build
           EOF
 
