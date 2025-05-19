@@ -82,7 +82,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Start staging env with Docker Compose
-        run: docker-compose -f docker-compose.yml up -d --build
+        run: docker compose -f docker-compose.yml up -d --build
+
 
   production:
     name: Deploy to Production (Simulated)
