@@ -51,7 +51,10 @@ jobs:
         run: flake8 . --count --show-source --statistics
 
       - name: Run Black formatter check
-        run: black --check .   
+        run: black --check .  
+
+      - name: Run Black formatter
+        run: black .
 
       - name: Wait for PostgreSQL
         run: |
