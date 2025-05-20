@@ -1,3 +1,25 @@
+import psycopg2
+import os
+
+def setup_module(module):
+    conn = psycopg2.connect(
+        host=os.getenv("DB_HOST", "localhost"),
+        database=os.getenv("DB_NAME", "iot_db"),
+        user=os.getenv("DB_USER", "iot_user"),
+        password=os.getenv("DB_PASSWORD", "iot_pass")
+    )
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sensor_readings (
+            id INTEGER PRIMARY KEY,
+            temperature REAL,
+            humidity REAL
+        )
+    """)
+    conn.commit()
+    cursor.close()
+    conn.close()
+    
 from fastapi.testclient import TestClient
 from app.main import app
 
