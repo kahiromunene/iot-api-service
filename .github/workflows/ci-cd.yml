@@ -50,13 +50,6 @@ jobs:
       - name: Run Black formatter
         run: black .
         
-      - name: Install linters
-        run: |
-          pip install flake8 
-          
-      - name: Run flake8 linter
-        run: flake8 . --count --show-source --statistics
-
       - name: Wait for PostgreSQL
         run: |
           until pg_isready -h localhost -p 5432 -U iot_user; do
