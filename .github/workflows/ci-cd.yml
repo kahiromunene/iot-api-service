@@ -42,7 +42,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
-          
+
+      - name: Install linters
+        run: |
+          pip install flake8 black
+
+      - name: Run flake8 linter
+        run: flake8 . --count --show-source --statistics
+
+      - name: Run Black formatter check
+        run: black --check .   
 
       - name: Wait for PostgreSQL
         run: |
@@ -71,6 +80,11 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/iot-api
           docker tag iot-api $IMAGE_NAME:latest
           docker push $IMAGE_NAME:latest
+
+      - name: Build Docker image with cache
+        run: |
+          docker buildx create --use
+          docker buildx build --cache-to=type=inline --cache-from=type=registry,ref=myimage:cache \ -t myimage:latest .
 
   staging:
     name: Deploy to Staging
