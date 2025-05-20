@@ -42,19 +42,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
-
+          
+      - name: Run Black formatter check
+        run: black --check . 
+      
+      - name: Run Black formatter
+        run: black .
+        
       - name: Install linters
         run: |
           pip install flake8 black
-
+          
       - name: Run flake8 linter
         run: flake8 . --count --show-source --statistics
-
-      - name: Run Black formatter check
-        run: black --check .  
-
-      - name: Run Black formatter
-        run: black .
 
       - name: Wait for PostgreSQL
         run: |
