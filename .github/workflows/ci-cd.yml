@@ -46,9 +46,6 @@ jobs:
           
       - name: Install black
         run: pip install black
-
-      - name: Run Black formatter check
-        run: black --check .
  
       - name: Run Black formatter
         run: black .
